@@ -13,11 +13,9 @@ Skills are markdown files that give AI agents specialized knowledge and workflow
 ## Available Skills
 
 <!-- SKILLS:START -->
-
-| Skill                                      | Description |
-| ------------------------------------------ | ----------- |
-| [sanity-gsc](skills/sanity-gsc/) | Google Search Console integration for Sanity CMS with content decay detection |
-
+| Skill | Description |
+|-------|-------------|
+| [pagebridge](skills/sanity-gsc/) | Set up and integrate PageBridge to sync Google Search Console data to Sanity CMS, monitor content decay, and create... |
 <!-- SKILLS:END -->
 
 ## Installation
