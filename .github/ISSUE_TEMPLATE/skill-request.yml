@@ -1,0 +1,71 @@
+name: Skill Request
+description: Request a new PageBridge skill
+title: "Skill Request: [skill-name]"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new skill! Please fill out the details below.
+
+  - type: input
+    id: skill-name
+    attributes:
+      label: Suggested skill name
+      description: Lowercase, hyphens only (e.g., "pagebridge-strapi", "pagebridge-contentful")
+      placeholder: "pagebridge-skill-name"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What should this skill do?
+      description: Describe the skill's purpose and capabilities
+      placeholder: "This skill should help with..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: triggers
+    attributes:
+      label: When should it be used?
+      description: What trigger phrases or scenarios should activate this skill?
+      placeholder: |
+        - When the user says "I want to integrate Google Search Console with my Strapi backend"
+        - When integrating PageBridge with a new project that uses Strapi
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example use cases
+      description: Provide 1-3 specific examples of how you'd use this skill
+      placeholder: |
+        1. A user wants to connect their Strapi CMS to PageBridge for analytics tracking. They could say "I want to integrate Google Search Console with my Strapi backend" and this skill would guide them through the setup process.
+        2. A developer is starting a new project with Strapi and wants to use PageBridge for analytics. They could say "I want to integrate PageBridge with my new Strapi project" and this skill would provide step-by-step instructions.
+        3. A user has an existing Strapi setup and wants to add PageBridge for performance monitoring. They could say "How do I add PageBridge to my Strapi CMS?" and this skill would offer tailored guidance based on their current configuration.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category does this skill fit into?
+      options:
+        - CMS
+        - E-commerce
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-skills
+    attributes:
+      label: Related existing skills
+      description: Are there existing skills this relates to or differs from?
+      placeholder: "Similar to pagebridge-strapi but for Contentful..."
+    validations:
+      required: false

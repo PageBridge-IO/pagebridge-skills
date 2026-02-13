@@ -1,0 +1,21 @@
+{
+  "name": "pagebridge",
+  "owner": {
+    "name": "PageBridge",
+    "url": "https://pagebridge.io"
+  },
+  "metadata": {
+    "description": "PageBridge skills for Claude Code — Google Search Console integration for Sanity Studio",
+    "version": "1.0.0",
+    "repository": "https://github.com/PageBridge-IO/pagebridge-skills"
+  },
+  "plugins": [
+    {
+      "name": "sanity-gsc",
+      "description": "Google Search Console integration for Sanity Studio",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/sanity-gsc"]
+    }
+  ]
+}

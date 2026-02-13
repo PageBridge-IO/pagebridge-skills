@@ -1,0 +1,114 @@
+{
+  "gscSiteConfig": {
+    "title": "My Site - Blog & Landing Pages",
+    "gscPropertyId": "sc-domain:yoursite.com",
+    "urlConfigs": [
+      {
+        "contentType": "post",
+        "slugField": "slug",
+        "pathPrefix": "/blog/",
+        "description": "Blog posts at /blog/{slug}"
+      },
+      {
+        "contentType": "useCase",
+        "slugField": "slug",
+        "pathPrefix": "/use-cases/",
+        "description": "Use case landing pages at /use-cases/{slug}"
+      },
+      {
+        "contentType": "caseStudy",
+        "slugField": "slug",
+        "pathPrefix": "/case-studies/",
+        "description": "Case study landing pages at /case-studies/{slug}"
+      }
+    ]
+  },
+  "contentTypeExamples": {
+    "post": {
+      "schemaFields": [
+        {
+          "name": "slug",
+          "title": "URL Slug",
+          "type": "string",
+          "description": "URL-friendly slug (no slashes, lowercase)"
+        },
+        {
+          "name": "title",
+          "title": "Title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "title": "Content",
+          "type": "array",
+          "of": [{ "type": "block" }]
+        },
+        {
+          "name": "gscSnapshot",
+          "title": "Performance Metrics",
+          "type": "reference",
+          "to": [{ "type": "gscSnapshot" }],
+          "description": "Latest GSC metrics from PageBridge sync"
+        }
+      ],
+      "exampleDocument": {
+        "slug": "how-to-track-seo-performance",
+        "title": "How to Track SEO Performance",
+        "body": "[...]",
+        "gscSnapshot": {
+          "_ref": "gsc-snapshot-12345"
+        }
+      }
+    },
+    "useCase": {
+      "schemaFields": [
+        {
+          "name": "slug",
+          "title": "URL Slug",
+          "type": "string",
+          "description": "URL slug for /use-cases/ section"
+        },
+        {
+          "name": "title",
+          "title": "Use Case Title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "title": "Short Description",
+          "type": "text"
+        },
+        {
+          "name": "content",
+          "title": "Full Content",
+          "type": "array",
+          "of": [{ "type": "block" }]
+        },
+        {
+          "name": "gscSnapshot",
+          "title": "Performance Metrics",
+          "type": "reference",
+          "to": [{ "type": "gscSnapshot" }]
+        }
+      ],
+      "exampleDocument": {
+        "slug": "enterprise-content-management",
+        "title": "Enterprise Content Management",
+        "description": "How enterprises use PageBridge...",
+        "content": "[...]",
+        "gscSnapshot": {
+          "_ref": "gsc-snapshot-67890"
+        }
+      }
+    }
+  },
+  "workflow": {
+    "step1": "Set up the gscSite document with the configuration above",
+    "step2": "Run: pnpm sync --site sc-domain:yoursite.com --dry-run",
+    "step3": "Verify URLs match in the output",
+    "step4": "Run: pnpm sync --site sc-domain:yoursite.com",
+    "step5": "Check Sanity for gscSnapshot and gscRefreshTask documents",
+    "step6": "Review decay signals in refresh task queue",
+    "step7": "Update content based on decay recommendations"
+  }
+}
