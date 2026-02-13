@@ -1,7 +1,7 @@
 ---
 name: sanity-gsc
 license: MIT
-description: Set up and integrate PageBridge to sync Google Search Console data to Sanity CMS, monitor content decay, and create refresh recommendations. Use when: (1) Setting up PageBridge for GSC + Sanity integration, (2) Configuring URL structures for different content types (blog posts, landing pages), (3) Understanding and acting on decay detection signals, (4) Running sync commands and troubleshooting sync issues, (5) Monitoring content performance and ranking decay for landing pages or blog posts.
+description: Integrate PageBridge to sync Google Search Console data to Sanity CMS, detect content decay, and manage refresh tasks. Use when setting up GSC + Sanity integration, configuring URL structures, understanding decay signals, running syncs, or monitoring content performance.
 ---
 
 # Sanity - Google Search Console Skill
