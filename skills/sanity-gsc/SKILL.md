@@ -1,9 +1,10 @@
 ---
-name: pagebridge
+name: sanity-gsc
+license: MIT
 description: Set up and integrate PageBridge to sync Google Search Console data to Sanity CMS, monitor content decay, and create refresh recommendations. Use when: (1) Setting up PageBridge for GSC + Sanity integration, (2) Configuring URL structures for different content types (blog posts, landing pages), (3) Understanding and acting on decay detection signals, (4) Running sync commands and troubleshooting sync issues, (5) Monitoring content performance and ranking decay for landing pages or blog posts.
 ---
 
-# PageBridge Skill
+# Sanity - Google Search Console Skill
 
 ## Quick Start
 
@@ -17,12 +18,15 @@ PageBridge syncs your Google Search Console data to Sanity CMS, automatically de
 ## Setup in 5 Minutes
 
 ### 1. Install Dependencies
+
 ```bash
 pnpm install
 ```
 
 ### 2. Configure Environment
+
 Create `.env` in the root directory:
+
 ```
 GOOGLE_SERVICE_ACCOUNT='{"type":"service_account",...}'
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/pagebridge
@@ -35,17 +39,21 @@ SITE_URL=https://yoursite.com
 See [setup-guide.md](references/setup-guide.md) for detailed instructions.
 
 ### 3. Start Database
+
 ```bash
 docker compose up -d
 pnpm db:push
 ```
 
 ### 4. Create gscSite in Sanity
+
 In Sanity Studio, create a document of type `gscSite` with:
+
 - **GSC Property:** `sc-domain:yoursite.com` (from `pnpm list-sites`)
 - **URL Configuration:** Configure your content types
 
 Example for blog + landing pages:
+
 ```json
 {
   "urlConfigs": [
@@ -66,6 +74,7 @@ Example for blog + landing pages:
 See [url-configuration.md](references/url-configuration.md) for details.
 
 ### 5. Run Sync
+
 ```bash
 # See what will happen
 pnpm sync --site sc-domain:yoursite.com --dry-run
@@ -81,17 +90,23 @@ Check Sanity for `gscSnapshot` (metrics) and `gscRefreshTask` (decay recommendat
 PageBridge flags content that needs attention based on three signals:
 
 ### Position Decay
+
 Your page was ranking well but slipped down results.
+
 - **Trigger:** Position drops 3+ spots in 28 days
 - **Action:** Update content to regain ranking
 
 ### Low CTR
+
 Page is in top 10 but users rarely click it.
+
 - **Trigger:** CTR < 1% while ranking positions 1-10
 - **Action:** Rewrite title and meta description
 
 ### Impressions Drop
+
 Your page's visibility in search results decreased significantly.
+
 - **Trigger:** 50%+ drop in impressions over 28 days
 - **Action:** Comprehensive content update
 
@@ -145,11 +160,13 @@ In Sanity `gscRefreshTask`:
 ## CLI Reference
 
 **List available GSC properties:**
+
 ```bash
 pnpm list-sites
 ```
 
 **Sync with options:**
+
 ```bash
 pnpm sync --site sc-domain:yoursite.com              # Full sync
 pnpm sync --site sc-domain:yoursite.com --dry-run    # Preview only
@@ -164,6 +181,7 @@ See [cli-reference.md](references/cli-reference.md) for all commands and schedul
 PageBridge matches GSC URLs to Sanity documents using configurable patterns.
 
 **Key points:**
+
 - Each content type needs a **pathPrefix** (e.g., `/blog/` for blog posts)
 - **slugField** must match the field name in your Sanity schema
 - Slugs must match the URL path exactly
@@ -181,6 +199,7 @@ PageBridge uses three schema types:
 3. **gscRefreshTask** - Refresh recommendations (auto-created when decay detected)
 
 In your content schema, add:
+
 ```typescript
 {
   name: 'gscSnapshot',
@@ -225,4 +244,4 @@ See [troubleshooting.md](references/troubleshooting.md) for comprehensive debugg
 
 ---
 
-*PageBridge syncs Google Search Console data to Sanity CMS for content performance tracking and decay detection. Monitor blog posts and landing pages to catch ranking loss early and maintain competitive visibility.*
+_PageBridge syncs Google Search Console data to Sanity CMS for content performance tracking and decay detection. Monitor blog posts and landing pages to catch ranking loss early and maintain competitive visibility._
